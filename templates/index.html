@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>main</title>
-</head>
-<body>
-<H1>Test22</H1>
+    <head>
+        <meta charset="UTF-8">
+        <title>Flashing example</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-</body>
+    </head>
+    <body>
+        <H1>Home Page</H1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <a href="{{ url_for('success') }}">Trigger Flash Message</a>
+
+    </body>
 </html>
